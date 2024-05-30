@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns:pro="http://www.liquibase.org/xml/ns/pro"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.1.xsd
+      http://www.liquibase.org/xml/ns/pro
+      http://www.liquibase.org/xml/ns/pro/liquibase-pro-4.1.xsd">
+
+    <changeSet id="1" author="kolya">
+        <preConditions>
+            <not>
+                <tableExists tableName="user_to_role"/>
+            </not>
+        </preConditions>
+        <createTable tableName="user_to_role">
+
+            <column name="user_id" type="bigserial">
+                <constraints foreignKeyName="user_id_fk" referencedTableName="users" referencedColumnNames="id" nullable="false"/>
+            </column>
+
+            <column name="role_id" type="bigserial">
+                <constraints foreignKeyName="role_id_fk" referencedTableName="roles" referencedColumnNames="id" nullable="false"/>
+            </column>
+
+        </createTable>
+        <rollback>
+
+            <dropTable tableName="user_to_role"/>
+        </rollback>
+    </changeSet>
+</databaseChangeLog>

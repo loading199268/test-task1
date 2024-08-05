@@ -3,10 +3,17 @@
 Администратор управляет правами доступа.
 
 В проекте использовались: 
+
 Java 17 
+
 архитектура REST  
+
 Spring: Boot, Security, JPA 
+
 PostgreSQL  
+
 Liquibase 
+
 Hibernate 
+
 jwt token
